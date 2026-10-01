@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anchors Arcade</title>
+<style>
+:root{--bg:#07080f;--p:#8b5cf6;--c:#22d3ee;--t:#e8eaf6;--m:#9aa0c3;--g:rgba(255,255,255,.06);--b:rgba(255,255,255,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--t);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(60vw 50vh at 15% 0,rgba(139,92,246,.28),transparent),radial-gradient(50vw 50vh at 90% 10%,rgba(34,211,238,.18),transparent),radial-gradient(60vw 40vh at 50% 110%,rgba(236,72,153,.15),transparent);animation:aur 18s ease-in-out infinite alternate}
+@keyframes aur{to{transform:translateY(-3vh) scale(1.08)}}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+header{position:sticky;top:0;z-index:10;display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:12px clamp(14px,4vw,40px);background:rgba(7,8,15,.7);backdrop-filter:blur(14px);border-bottom:1px solid var(--b)}
+.logo{font-weight:800;letter-spacing:.12em;background:linear-gradient(90deg,var(--c),var(--p));-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none;font-size:1.15rem}
+nav{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+nav a{color:var(--m);text-decoration:none;padding:6px 12px;border-radius:99px;transition:.2s}
+nav a:hover,nav a.on{color:#fff;background:var(--g)}
+.search{background:var(--g);border:1px solid var(--b);border-radius:99px;padding:7px 14px;width:min(240px,100%)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--b);background:var(--g);border-radius:12px;padding:8px 16px;cursor:pointer;text-decoration:none;transition:.2s;color:var(--t)}
+.btn:hover{transform:translateY(-2px);border-color:var(--c);box-shadow:0 0 18px rgba(34,211,238,.3)}
+.btn.pri{background:linear-gradient(90deg,var(--p),var(--c));border:0;color:#fff;font-weight:700;letter-spacing:.06em}
+main{padding:0 clamp(14px,4vw,40px) 60px;max-width:1700px;margin:auto;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.hero{padding:clamp(40px,9vw,110px) 0 30px;text-align:center}
+.hero h1{font-size:clamp(2.2rem,7vw,5rem);margin:0;letter-spacing:.04em;line-height:1.05;text-shadow:0 0 40px rgba(139,92,246,.5)}
+.hero p{color:var(--m);max-width:560px;margin:14px auto 24px}
+.pill{display:inline-block;margin-bottom:14px;padding:4px 14px;border-radius:99px;border:1px solid var(--b);background:var(--g);color:var(--c);font-size:.85rem}
+h2{margin:36px 0 14px;font-size:1.3rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:18px}
+.grid.big{grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
+.card{position:relative;background:var(--g);border:1px solid var(--b);border-radius:18px;overflow:hidden;backdrop-filter:blur(8px);transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column}
+.card:hover,.card:focus-within{transform:translateY(-6px);border-color:var(--p);box-shadow:0 10px 30px rgba(139,92,246,.35)}
+.th{aspect-ratio:16/10;background:linear-gradient(135deg,#1b1740,#0b2a3a);display:grid;place-items:center;font-size:2.4rem;font-weight:800;color:rgba(255,255,255,.35);overflow:hidden}
+.th img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.card:hover .th img{transform:scale(1.07)}
+.body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.body h3{margin:0;font-size:1.05rem}
+.body p{margin:0;color:var(--m);font-size:.88rem;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tag{font-size:.72rem;color:var(--c);text-transform:uppercase;letter-spacing:.08em}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
+.fav{background:none;border:0;font-size:1.4rem;cursor:pointer;color:var(--m);transition:.2s}
+.fav.on{color:#f43f5e;animation:pop .35s}.fav:hover{transform:scale(1.2)}
+@keyframes pop{50%{transform:scale(1.5)}}
+.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0}
+.chip{border:1px solid var(--b);background:var(--g);border-radius:99px;padding:5px 14px;cursor:pointer}
+.chip.on{background:var(--p);border-color:var(--p)}
+select{background:#14162a;border:1px solid var(--b);border-radius:10px;padding:6px 10px;margin-left:auto}
+.empty{color:var(--m);padding:30px;text-align:center;border:1px dashed var(--b);border-radius:16px}
+.player{display:flex;flex-direction:column;height:calc(100vh - 70px);padding-top:12px}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.bar h2{margin:0 auto 0 6px;font-size:1.2rem}
+#stage{flex:1;position:relative;background:#000;border:1px solid var(--b);border-radius:16px;overflow:hidden;min-height:300px}
+#stage iframe{width:100%;height:100%;border:0;background:#000}
+.ov{position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:rgba(7,8,15,.92);gap:12px;align-content:center}
+.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--b);border-top-color:var(--c);animation:r .8s linear infinite;margin:auto}
+@keyframes r{to{transform:rotate(360deg)}}
+footer{text-align:center;color:var(--m);font-size:.8rem;padding:20px}
+@media(prefers-reduced-motion:reduce){*,body:before{animation:none!important;transition:none!important}}
+@media(max-width:640px){.player{height:calc(100vh - 120px)}}
+</style></head><body>
+<header>
+ <a class="logo" href="#/">⚓ ANCHORS ARCADE</a>
+ <nav aria-label="Main"><a href="#/" data-r="home">Home</a><a href="#/games" data-r="games">Games</a><a href="#/favorites" data-r="favorites">Favorites</a><a href="#/recent" data-r="recent">Recently Played</a></nav>
+ <input id="q" class="search" type="search" placeholder="Search games…" aria-label="Search games" autocomplete="off">
+ <a class="btn" id="gh" href="https://github.com/Anchors-Arcade/PP" target="_blank" rel="noopener">GitHub</a>
+</header>
+<main id="app" aria-live="polite"></main>
+<footer>Anchors Arcade</footer>
+<script>
+const $=s=>document.querySelector(s),app=$('#app');
+const store={get(k,d){try{return JSON.parse(localStorage.getItem('aa:'+k))??d}catch{return d}},set(k,v){try{localStorage.setItem('aa:'+k,JSON.stringify(v))}catch{}}};
+let games=[],favs=new Set(store.get('favs',[])),recent=store.get('recent',{}),state={cat:'All',sort:'az',q:''};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const url=p=>'../'+p.split('/').map(encodeURIComponent).join('/');   // hub/ sits one level below repo root; relative so GitHub Pages subpaths work
+const plays=g=>recent[g.id]?.n||0, last=g=>recent[g.id]?.t||0;
+
+async function load(){
+  try{const r=await fetch('games.json',{cache:'no-cache'});if(!r.ok)throw 0;games=(await r.json()).games||[]}
+  catch{app.innerHTML='<div class="empty">Could not load games.json. Run <code>node scripts/generate-games.mjs</code>.</div>';return false}
+  return true;
+}
+function card(g){
+  const th=g.thumbnail?`<img loading="lazy" decoding="async" src="${url(g.thumbnail)}" alt="${esc(g.title)} thumbnail" onerror="this.parentNode.textContent='${esc(g.title[0]||'?').toUpperCase()}'">`:esc(g.title[0]||'?').toUpperCase();
+  const f=favs.has(g.id);
+  return `<article class="card"><div class="th">${th}</div><div class="body"><span class="tag">${esc(g.category)}</span><h3>${esc(g.title)}</h3><p>${esc(g.description)}</p>
+  <div class="row"><button class="fav ${f?'on':''}" data-fav="${esc(g.id)}" aria-pressed="${f}" aria-label="${f?'Remove from':'Add to'} favorites: ${esc(g.title)}">${f?'♥':'♡'}</button>
+  <a class="btn pri" href="#/play/${encodeURIComponent(g.id)}" aria-label="Play ${esc(g.title)}">PLAY</a></div></div></article>`;
+}
+const grid=(l,big)=>l.length?`<div class="grid ${big?'big':''}">${l.map(card).join('')}</div>`:'';
+const recentList=()=>games.filter(g=>last(g)).sort((a,b)=>last(b)-last(a));
+const favList=()=>games.filter(g=>favs.has(g.id));
+function matches(g,q){q=q.toLowerCase();return !q||[g.title,g.description,g.category,...(g.tags||[])].join(' ').toLowerCase().includes(q)}
+
+function home(){
+  const feat=[...games].sort((a,b)=>(b.thumbnail?1:0)-(a.thumbnail?1:0)||b.added-a.added).slice(0,6);
+  const rec=recentList().slice(0,6),fv=favList().slice(0,6);
+  app.innerHTML=`<section class="hero"><span class="pill">${games.length} Game${games.length===1?'':'s'}</span><h1>YOUR GAMES.<br>ONE PLACE.</h1><p>Every playable game from the Anchors Arcade repository, right in your browser.</p><a class="btn pri" href="#/games" style="padding:14px 34px;font-size:1.1rem">PLAY NOW</a></section>
+  ${games.length?`<h2>Featured</h2>${grid(feat,true)}`:'<div class="empty">No games found yet.</div>'}
+  ${rec.length?`<h2>Recently Played</h2>${grid(rec)}`:''}${fv.length?`<h2>Favorites</h2>${grid(fv)}`:''}`;
+}
+function library(){
+  const cats=['All',...[...new Set(games.map(g=>g.category))].sort()];
+  let l=games.filter(g=>(state.cat==='All'||g.category===state.cat)&&matches(g,state.q));
+  const S={az:(a,b)=>a.title.localeCompare(b.title,'en',{numeric:true}),za:(a,b)=>b.title.localeCompare(a.title,'en',{numeric:true}),new:(a,b)=>b.added-a.added||S.az(a,b),most:(a,b)=>plays(b)-plays(a)||S.az(a,b),fav:(a,b)=>favs.has(b.id)-favs.has(a.id)||S.az(a,b)};
+  l.sort(S[state.sort]);
+  app.innerHTML=`<h2>Games <small style="color:var(--m)">${l.length} of ${games.length}</small></h2>
+  <div class="chips">${cats.map(c=>`<button class="chip ${c===state.cat?'on':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}
+  <select id="sort" aria-label="Sort games">${[['az','A–Z'],['za','Z–A'],['new','Recently Added'],['most','Most Played'],['fav','Favorites']].map(([v,t])=>`<option value="${v}" ${v===state.sort?'selected':''}>${t}</option>`).join('')}</select></div>
+  ${l.length?grid(l):'<div class="empty">No games match your search.</div>'}`;
+}
+function listView(title,l,msg){app.innerHTML=`<h2>${title}</h2>${l.length?grid(l):`<div class="empty">${msg}</div>`}`}
+
+function play(id){
+  const g=games.find(x=>x.id===id);
+  if(!g){app.innerHTML='<div class="empty">Game not found. <a href="#/games">Back to games</a></div>';return}
+  recent[g.id]={n:plays(g)+1,t:Date.now()};store.set('recent',recent);
+  app.innerHTML=`<div class="player"><div class="bar"><a class="btn" href="#/games">← BACK TO GAMES</a><h2>${esc(g.title)}</h2>
+   <span class="tag">${esc(g.category)} · ${esc(g.engine||'HTML5')}</span>
+   <button class="btn" id="rs">↻ Restart</button><button class="btn" id="fs">⛶ Fullscreen</button></div><div id="stage"></div></div>`;
+  const stage=$('#stage');
+  async function mount(){
+    stage.innerHTML='<div class="ov"><div class="spin" role="status" aria-label="Loading"></div><span>Loading '+esc(g.title)+'…</span></div>';
+    try{const r=await fetch(url(g.path),{method:'HEAD'});if(!r.ok)throw 0}catch{return fail()}
+    const f=document.createElement('iframe');f.title=g.title;f.allow='fullscreen; autoplay; gamepad; clipboard-write';
+    f.onload=()=>stage.querySelector('.ov')?.remove();f.onerror=fail;f.src=url(g.path);stage.prepend(f);f.focus();
+  }
+  function fail(){stage.innerHTML=`<div class="ov"><h2>Unable to load this game.</h2><div><a class="btn" href="#/games">Return to Games</a> <button class="btn pri" id="rt">Retry</button></div></div>`;$('#rt').onclick=mount}
+  $('#rs').onclick=mount;
+  $('#fs').onclick=()=>{document.fullscreenElement?document.exitFullscreen():stage.requestFullscreen?.().catch(()=>{})};
+  mount();
+}
+
+function route(){
+  const [,r='',id]=location.hash.replace(/^#/,'').split('/');
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.r===(r||'home')));
+  if(r!=='games'&&r!=='' &&state.q&&r!=='play'){}
+  if(r==='games')library();
+  else if(r==='favorites')listView('Favorites',favList(),'No favorites yet. Tap ♡ on any game.');
+  else if(r==='recent')listView('Recently Played',recentList(),'You haven’t played anything yet.');
+  else if(r==='play')play(decodeURIComponent(id||''));
+  else home();
+  if(r!=='play')scrollTo(0,0);
+}
+app.addEventListener('click',e=>{
+  const f=e.target.closest('[data-fav]');
+  if(f){const id=f.dataset.fav;favs.has(id)?favs.delete(id):favs.add(id);store.set('favs',[...favs]);
+    const on=favs.has(id);f.classList.toggle('on',on);f.textContent=on?'♥':'♡';f.setAttribute('aria-pressed',on);return}
+  const c=e.target.closest('[data-cat]');if(c){state.cat=c.dataset.cat;library()}
+});
+app.addEventListener('change',e=>{if(e.target.id==='sort'){state.sort=e.target.value;library()}});
+$('#q').addEventListener('input',e=>{state.q=e.target.value.trim();if(location.hash!=='#/games'){history.replaceState(null,'','#/games')}route();$('#q').focus()});
+addEventListener('hashchange',route);
+load().then(ok=>ok&&route());
+</script></body></html>
