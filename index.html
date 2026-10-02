@@ -1,154 +1,164 @@
-<!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Anchors Arcade</title>
 <style>
-:root{--bg:#07080f;--p:#8b5cf6;--c:#22d3ee;--t:#e8eaf6;--m:#9aa0c3;--g:rgba(255,255,255,.06);--b:rgba(255,255,255,.12)}
+:root{--bg:#07080f;--p:#8b5cf6;--c:#22d3ee;--t:#eef0ff;--m:#9aa0c3;--g:rgba(255,255,255,.06);--b:rgba(255,255,255,.12)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--t);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(60vw 50vh at 15% 0,rgba(139,92,246,.28),transparent),radial-gradient(50vw 50vh at 90% 10%,rgba(34,211,238,.18),transparent),radial-gradient(60vw 40vh at 50% 110%,rgba(236,72,153,.15),transparent);animation:aur 18s ease-in-out infinite alternate}
-@keyframes aur{to{transform:translateY(-3vh) scale(1.08)}}
+body{margin:0;background:var(--bg);color:var(--t);font:16px/1.5 system-ui,Segoe UI,Roboto,sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(600px 400px at 15% 10%,rgba(139,92,246,.35),transparent),radial-gradient(700px 450px at 85% 20%,rgba(34,211,238,.22),transparent),radial-gradient(600px 400px at 50% 100%,rgba(236,72,153,.18),transparent);animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{to{transform:scale(1.15) translateY(-20px)}}
 button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
 :focus-visible{outline:2px solid var(--c);outline-offset:2px}
-header{position:sticky;top:0;z-index:10;display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:12px clamp(14px,4vw,40px);background:rgba(7,8,15,.7);backdrop-filter:blur(14px);border-bottom:1px solid var(--b)}
-.logo{font-weight:800;letter-spacing:.12em;background:linear-gradient(90deg,var(--c),var(--p));-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none;font-size:1.15rem}
-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1}
-nav a{color:var(--m);text-decoration:none;padding:6px 12px;border-radius:99px;transition:.2s}
-nav a:hover,nav a.on{color:#fff;background:var(--g)}
-.search{background:var(--g);border:1px solid var(--b);border-radius:99px;padding:7px 14px;width:min(240px,100%)}
-.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--b);background:var(--g);border-radius:12px;padding:8px 16px;cursor:pointer;text-decoration:none;transition:.2s;color:var(--t)}
-.btn:hover{transform:translateY(-2px);border-color:var(--c);box-shadow:0 0 18px rgba(34,211,238,.3)}
-.btn.pri{background:linear-gradient(90deg,var(--p),var(--c));border:0;color:#fff;font-weight:700;letter-spacing:.06em}
-main{padding:0 clamp(14px,4vw,40px) 60px;max-width:1700px;margin:auto;animation:in .35s ease}
+header{position:sticky;top:0;z-index:20;display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:12px 4vw;background:rgba(7,8,15,.7);backdrop-filter:blur(14px);border-bottom:1px solid var(--b)}
+.logo{font-weight:800;letter-spacing:.08em;background:linear-gradient(90deg,var(--p),var(--c));-webkit-background-clip:text;color:transparent;font-size:1.2rem;margin-right:auto}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a,.btn{padding:8px 14px;border-radius:10px;color:var(--m);text-decoration:none;border:1px solid transparent;background:none;transition:.2s}
+nav a:hover,nav a.on{color:var(--t);background:var(--g);border-color:var(--b)}
+.btn{color:var(--t);background:var(--g);border-color:var(--b)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(139,92,246,.35)}
+.btn.pri{background:linear-gradient(90deg,var(--p),#6366f1);border:0;font-weight:700}
+#q{background:var(--g);border:1px solid var(--b);border-radius:10px;padding:8px 14px;width:min(240px,100%)}
+main{padding:24px 4vw 60px;max-width:1700px;margin:auto;animation:in .35s}
 @keyframes in{from{opacity:0;transform:translateY(8px)}}
-.hero{padding:clamp(40px,9vw,110px) 0 30px;text-align:center}
-.hero h1{font-size:clamp(2.2rem,7vw,5rem);margin:0;letter-spacing:.04em;line-height:1.05;text-shadow:0 0 40px rgba(139,92,246,.5)}
-.hero p{color:var(--m);max-width:560px;margin:14px auto 24px}
-.pill{display:inline-block;margin-bottom:14px;padding:4px 14px;border-radius:99px;border:1px solid var(--b);background:var(--g);color:var(--c);font-size:.85rem}
+.hero{padding:7vh 0 4vh}.hero h1{font-size:clamp(2.2rem,7vw,5rem);margin:0;line-height:1;background:linear-gradient(90deg,#fff,var(--c),var(--p));-webkit-background-clip:text;color:transparent}
+.hero p{color:var(--m);max-width:560px;font-size:1.1rem}
+.count{display:inline-block;margin:0 0 14px;padding:4px 12px;border-radius:99px;border:1px solid var(--b);color:var(--c);background:var(--g)}
 h2{margin:36px 0 14px;font-size:1.3rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:18px}
-.grid.big{grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
-.card{position:relative;background:var(--g);border:1px solid var(--b);border-radius:18px;overflow:hidden;backdrop-filter:blur(8px);transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column}
-.card:hover,.card:focus-within{transform:translateY(-6px);border-color:var(--p);box-shadow:0 10px 30px rgba(139,92,246,.35)}
-.th{aspect-ratio:16/10;background:linear-gradient(135deg,#1b1740,#0b2a3a);display:grid;place-items:center;font-size:2.4rem;font-weight:800;color:rgba(255,255,255,.35);overflow:hidden}
-.th img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.card:hover .th img{transform:scale(1.07)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.grid.big{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.card{position:relative;background:var(--g);border:1px solid var(--b);border-radius:18px;overflow:hidden;backdrop-filter:blur(8px);transition:.25s;display:flex;flex-direction:column}
+.card:hover,.card:focus-within{transform:translateY(-6px);border-color:var(--p);box-shadow:0 10px 36px rgba(139,92,246,.35)}
+.th{aspect-ratio:16/10;background:linear-gradient(135deg,#1b1740,#0d3a4a);display:grid;place-items:center;font-size:3rem;font-weight:800;color:rgba(255,255,255,.35);overflow:hidden}
+.th img{width:100%;height:100%;object-fit:cover}
 .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
-.body h3{margin:0;font-size:1.05rem}
-.body p{margin:0;color:var(--m);font-size:.88rem;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.body h3{margin:0;font-size:1.05rem}.body p{margin:0;color:var(--m);font-size:.85rem;flex:1}
 .tag{font-size:.72rem;color:var(--c);text-transform:uppercase;letter-spacing:.08em}
-.row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
-.fav{background:none;border:0;font-size:1.4rem;cursor:pointer;color:var(--m);transition:.2s}
-.fav.on{color:#f43f5e;animation:pop .35s}.fav:hover{transform:scale(1.2)}
-@keyframes pop{50%{transform:scale(1.5)}}
-.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0}
-.chip{border:1px solid var(--b);background:var(--g);border-radius:99px;padding:5px 14px;cursor:pointer}
-.chip.on{background:var(--p);border-color:var(--p)}
-select{background:#14162a;border:1px solid var(--b);border-radius:10px;padding:6px 10px;margin-left:auto}
-.empty{color:var(--m);padding:30px;text-align:center;border:1px dashed var(--b);border-radius:16px}
-.player{display:flex;flex-direction:column;height:calc(100vh - 70px);padding-top:12px}
-.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
-.bar h2{margin:0 auto 0 6px;font-size:1.2rem}
-#stage{flex:1;position:relative;background:#000;border:1px solid var(--b);border-radius:16px;overflow:hidden;min-height:300px}
-#stage iframe{width:100%;height:100%;border:0;background:#000}
-.ov{position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:rgba(7,8,15,.92);gap:12px;align-content:center}
-.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--b);border-top-color:var(--c);animation:r .8s linear infinite;margin:auto}
-@keyframes r{to{transform:rotate(360deg)}}
-footer{text-align:center;color:var(--m);font-size:.8rem;padding:20px}
-@media(prefers-reduced-motion:reduce){*,body:before{animation:none!important;transition:none!important}}
-@media(max-width:640px){.player{height:calc(100vh - 120px)}}
-</style></head><body>
+.row{display:flex;gap:8px;align-items:center;margin-top:6px}.row .btn{flex:1;text-align:center}
+.fav{flex:0 0 auto!important;width:42px;font-size:1.2rem;padding:6px}
+.fav.on{color:#f43f5e}.fav.pop{animation:pop .4s}@keyframes pop{50%{transform:scale(1.5)}}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 18px}
+select{background:#12142a;border:1px solid var(--b);border-radius:10px;padding:8px 12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{padding:6px 14px;border-radius:99px;border:1px solid var(--b);background:var(--g)}.chip.on{background:var(--p);border-color:var(--p)}
+.empty{color:var(--m);padding:30px;border:1px dashed var(--b);border-radius:16px;text-align:center}
+.player{display:flex;flex-direction:column;height:calc(100vh - 120px);min-height:420px}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.bar h2{margin:0 auto 0 6px;font-size:1.2rem}
+#stage{flex:1;position:relative;background:#000;border:1px solid var(--b);border-radius:16px;overflow:hidden;box-shadow:0 0 50px rgba(139,92,246,.25)}
+#stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.ov{position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:rgba(7,8,15,.92);z-index:2}
+.spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--b);border-top-color:var(--c);animation:s 1s linear infinite;margin:0 auto 12px}@keyframes s{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(max-width:600px){.grid,.grid.big{grid-template-columns:repeat(2,1fr);gap:12px}.body p{display:none}}
+</style>
+</head>
+<body>
 <header>
- <a class="logo" href="#/">⚓ ANCHORS ARCADE</a>
- <nav aria-label="Main"><a href="#/" data-r="home">Home</a><a href="#/games" data-r="games">Games</a><a href="#/favorites" data-r="favorites">Favorites</a><a href="#/recent" data-r="recent">Recently Played</a></nav>
- <input id="q" class="search" type="search" placeholder="Search games…" aria-label="Search games" autocomplete="off">
- <a class="btn" id="gh" href="https://github.com/Anchors-Arcade/PP" target="_blank" rel="noopener">GitHub</a>
+  <div class="logo">ANCHORS ARCADE</div>
+  <nav aria-label="Main">
+    <a href="#/" data-r="home">Home</a><a href="#/games" data-r="games">Games</a>
+    <a href="#/favorites" data-r="favorites">Favorites</a><a href="#/recent" data-r="recent">Recently Played</a>
+  </nav>
+  <input id="q" type="search" placeholder="Search games…" aria-label="Search games">
+  <a class="btn" href="https://github.com/Anchors-Arcade/X" target="_blank" rel="noopener">GitHub</a>
 </header>
-<main id="app" aria-live="polite"></main>
-<footer>Anchors Arcade</footer>
+<main id="app" tabindex="-1"></main>
 <script>
-const $=s=>document.querySelector(s),app=$('#app');
-const store={get(k,d){try{return JSON.parse(localStorage.getItem('aa:'+k))??d}catch{return d}},set(k,v){try{localStorage.setItem('aa:'+k,JSON.stringify(v))}catch{}}};
-let games=[],favs=new Set(store.get('favs',[])),recent=store.get('recent',{}),state={cat:'All',sort:'az',q:''};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const url=p=>'../'+p.split('/').map(encodeURIComponent).join('/');   // hub/ sits one level below repo root; relative so GitHub Pages subpaths work
-const plays=g=>recent[g.id]?.n||0, last=g=>recent[g.id]?.t||0;
+const $=(s,r=document)=>r.querySelector(s), app=$('#app');
+const LS={get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
+let games=[],fav=new Set(LS.get('aa_fav',[])),hist=LS.get('aa_hist',{}), st={cat:'All',sort:'az',q:'',shown:60};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const url=p=>p.split('/').map(encodeURIComponent).join('/'); // relative -> works on GitHub Pages subpaths
 
-async function load(){
-  try{const r=await fetch('games.json',{cache:'no-cache'});if(!r.ok)throw 0;games=(await r.json()).games||[]}
-  catch{app.innerHTML='<div class="empty">Could not load games.json. Run <code>node scripts/generate-games.mjs</code>.</div>';return false}
-  return true;
+async function init(){
+  try{games=await (await fetch('games.json',{cache:'no-cache'})).json()}catch{games=[]}
+  window.addEventListener('hashchange',route);route();
 }
-function card(g){
-  const th=g.thumbnail?`<img loading="lazy" decoding="async" src="${url(g.thumbnail)}" alt="${esc(g.title)} thumbnail" onerror="this.parentNode.textContent='${esc(g.title[0]||'?').toUpperCase()}'">`:esc(g.title[0]||'?').toUpperCase();
-  const f=favs.has(g.id);
-  return `<article class="card"><div class="th">${th}</div><div class="body"><span class="tag">${esc(g.category)}</span><h3>${esc(g.title)}</h3><p>${esc(g.description)}</p>
-  <div class="row"><button class="fav ${f?'on':''}" data-fav="${esc(g.id)}" aria-pressed="${f}" aria-label="${f?'Remove from':'Add to'} favorites: ${esc(g.title)}">${f?'♥':'♡'}</button>
-  <a class="btn pri" href="#/play/${encodeURIComponent(g.id)}" aria-label="Play ${esc(g.title)}">PLAY</a></div></div></article>`;
-}
-const grid=(l,big)=>l.length?`<div class="grid ${big?'big':''}">${l.map(card).join('')}</div>`:'';
-const recentList=()=>games.filter(g=>last(g)).sort((a,b)=>last(b)-last(a));
-const favList=()=>games.filter(g=>favs.has(g.id));
-function matches(g,q){q=q.toLowerCase();return !q||[g.title,g.description,g.category,...(g.tags||[])].join(' ').toLowerCase().includes(q)}
+$('#q').addEventListener('input',e=>{st.q=e.target.value.trim().toLowerCase();st.shown=60;if(!/^#\/(games|favorites|recent)/.test(location.hash))location.hash='#/games';else route()});
 
+function match(g){const q=st.q;return !q||[g.title,g.description,g.category,...(g.tags||[])].join(' ').toLowerCase().includes(q)}
+function card(g,big){
+  const th=g.thumbnail?`<img loading="lazy" alt="${esc(g.title)} thumbnail" src="${url(g.thumbnail)}" onerror="this.remove()">`:'';
+  const f=fav.has(g.id);
+  return `<article class="card"><div class="th" aria-hidden="${!!g.thumbnail}">${th||esc(g.title[0])}</div><div class="body"><span class="tag">${esc(g.category)}</span><h3>${esc(g.title)}</h3>${g.description?`<p>${esc(g.description)}</p>`:'<p></p>'}
+  <div class="row"><button class="btn fav ${f?'on':''}" data-fav="${g.id}" aria-pressed="${f}" aria-label="${f?'Remove':'Add'} ${esc(g.title)} favorite">${f?'♥':'♡'}</button><a class="btn pri" href="#/play/${g.id}">PLAY</a></div></div></article>`;
+}
+function section(t,list,big){return `<h2>${t}</h2>`+(list.length?`<div class="grid ${big?'big':''}">${list.map(g=>card(g)).join('')}</div>`:'')}
+const recent=()=>Object.entries(hist).sort((a,b)=>b[1].last-a[1].last).map(([id])=>games.find(g=>g.id===id)).filter(Boolean);
+
+function sorted(list){
+  const a=[...list];
+  ({az:()=>a.sort((x,y)=>x.title.localeCompare(y.title)),za:()=>a.sort((x,y)=>y.title.localeCompare(x.title)),
+    new:()=>a.sort((x,y)=>y.added-x.added),played:()=>a.sort((x,y)=>(hist[y.id]?.count||0)-(hist[x.id]?.count||0)),
+    fav:()=>a.sort((x,y)=>fav.has(y.id)-fav.has(x.id))})[st.sort]();
+  return a;
+}
+function library(title,base){
+  const cats=['All',...new Set(base.map(g=>g.category))].sort((a,b)=>a==='All'?-1:b==='All'?1:a.localeCompare(b));
+  const list=sorted(base.filter(g=>(st.cat==='All'||g.category===st.cat)&&match(g)));
+  return `<h1 style="margin:10px 0">${title} <span class="count">${list.length} Game${list.length===1?'':'s'}</span></h1>
+  <div class="tools"><div class="chips" role="group" aria-label="Categories">${cats.map(c=>`<button class="chip ${c===st.cat?'on':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}</div>
+  <select id="sort" aria-label="Sort"><option value="az">A–Z</option><option value="za">Z–A</option><option value="new">Recently Added</option><option value="played">Most Played</option><option value="fav">Favorites</option></select></div>`+
+  (list.length?`<div class="grid">${list.slice(0,st.shown).map(g=>card(g)).join('')}</div>${list.length>st.shown?'<p style="text-align:center"><button class="btn" id="more">Load more</button></p>':''}`:'<div class="empty">No games found.</div>');
+}
+function route(){
+  const h=location.hash.replace(/^#\//,''),[r,id]=h.split('/');
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.r===(r||'home')));
+  $('#stage')&&exitFs();
+  if(r==='play')return play(id);
+  if(r==='games')app.innerHTML=library('Games',games);
+  else if(r==='favorites')app.innerHTML=games.length&&fav.size?library('Favorites',games.filter(g=>fav.has(g.id))):'<h1>Favorites</h1><div class="empty">Tap ♡ on any game to save it here.</div>';
+  else if(r==='recent')app.innerHTML=recent().length?library('Recently Played',recent()):'<h1>Recently Played</h1><div class="empty">Games you launch will appear here.</div>';
+  else home();
+  const s=$('#sort');if(s)s.value=st.sort;
+  window.scrollTo(0,0);
+}
 function home(){
-  const feat=[...games].sort((a,b)=>(b.thumbnail?1:0)-(a.thumbnail?1:0)||b.added-a.added).slice(0,6);
-  const rec=recentList().slice(0,6),fv=favList().slice(0,6);
-  app.innerHTML=`<section class="hero"><span class="pill">${games.length} Game${games.length===1?'':'s'}</span><h1>YOUR GAMES.<br>ONE PLACE.</h1><p>Every playable game from the Anchors Arcade repository, right in your browser.</p><a class="btn pri" href="#/games" style="padding:14px 34px;font-size:1.1rem">PLAY NOW</a></section>
-  ${games.length?`<h2>Featured</h2>${grid(feat,true)}`:'<div class="empty">No games found yet.</div>'}
-  ${rec.length?`<h2>Recently Played</h2>${grid(rec)}`:''}${fv.length?`<h2>Favorites</h2>${grid(fv)}`:''}`;
+  if(!games.length){app.innerHTML='<div class="hero"><h1>YOUR GAMES.<br>ONE PLACE.</h1></div><div class="empty">No games found. Run <code>node generate-arcade.mjs</code> to create games.json.</div>';return}
+  const feat=[...games].sort((a,b)=>(b.thumbnail?1:0)-(a.thumbnail?1:0)||(hist[b.id]?.count||0)-(hist[a.id]?.count||0)||a.title.localeCompare(b.title)).slice(0,6);
+  const fv=games.filter(g=>fav.has(g.id)).slice(0,6);
+  app.innerHTML=`<div class="hero"><span class="count">${games.length} Games</span><h1>PLAY THE ARCADE</h1><p>Every game from the Anchors Arcade repository, playable right in your browser.</p><a class="btn pri" href="#/games" style="display:inline-block;font-size:1.1rem;padding:12px 28px">PLAY NOW</a></div>`+
+   section('Featured',feat,true)+(recent().length?section('Recently Played',recent().slice(0,6)):'')+(fv.length?section('Favorites',fv):'');
 }
-function library(){
-  const cats=['All',...[...new Set(games.map(g=>g.category))].sort()];
-  let l=games.filter(g=>(state.cat==='All'||g.category===state.cat)&&matches(g,state.q));
-  const S={az:(a,b)=>a.title.localeCompare(b.title,'en',{numeric:true}),za:(a,b)=>b.title.localeCompare(a.title,'en',{numeric:true}),new:(a,b)=>b.added-a.added||S.az(a,b),most:(a,b)=>plays(b)-plays(a)||S.az(a,b),fav:(a,b)=>favs.has(b.id)-favs.has(a.id)||S.az(a,b)};
-  l.sort(S[state.sort]);
-  app.innerHTML=`<h2>Games <small style="color:var(--m)">${l.length} of ${games.length}</small></h2>
-  <div class="chips">${cats.map(c=>`<button class="chip ${c===state.cat?'on':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}
-  <select id="sort" aria-label="Sort games">${[['az','A–Z'],['za','Z–A'],['new','Recently Added'],['most','Most Played'],['fav','Favorites']].map(([v,t])=>`<option value="${v}" ${v===state.sort?'selected':''}>${t}</option>`).join('')}</select></div>
-  ${l.length?grid(l):'<div class="empty">No games match your search.</div>'}`;
-}
-function listView(title,l,msg){app.innerHTML=`<h2>${title}</h2>${l.length?grid(l):`<div class="empty">${msg}</div>`}`}
-
 function play(id){
   const g=games.find(x=>x.id===id);
   if(!g){app.innerHTML='<div class="empty">Game not found. <a href="#/games">Back to games</a></div>';return}
-  recent[g.id]={n:plays(g)+1,t:Date.now()};store.set('recent',recent);
-  app.innerHTML=`<div class="player"><div class="bar"><a class="btn" href="#/games">← BACK TO GAMES</a><h2>${esc(g.title)}</h2>
-   <span class="tag">${esc(g.category)} · ${esc(g.engine||'HTML5')}</span>
-   <button class="btn" id="rs">↻ Restart</button><button class="btn" id="fs">⛶ Fullscreen</button></div><div id="stage"></div></div>`;
-  const stage=$('#stage');
-  async function mount(){
-    stage.innerHTML='<div class="ov"><div class="spin" role="status" aria-label="Loading"></div><span>Loading '+esc(g.title)+'…</span></div>';
-    try{const r=await fetch(url(g.path),{method:'HEAD'});if(!r.ok)throw 0}catch{return fail()}
-    const f=document.createElement('iframe');f.title=g.title;f.allow='fullscreen; autoplay; gamepad; clipboard-write';
-    f.onload=()=>stage.querySelector('.ov')?.remove();f.onerror=fail;f.src=url(g.path);stage.prepend(f);f.focus();
-  }
-  function fail(){stage.innerHTML=`<div class="ov"><h2>Unable to load this game.</h2><div><a class="btn" href="#/games">Return to Games</a> <button class="btn pri" id="rt">Retry</button></div></div>`;$('#rt').onclick=mount}
-  $('#rs').onclick=mount;
-  $('#fs').onclick=()=>{document.fullscreenElement?document.exitFullscreen():stage.requestFullscreen?.().catch(()=>{})};
-  mount();
+  const h=hist[g.id]||{count:0};hist[g.id]={count:h.count+1,last:Date.now()};LS.set('aa_hist',hist);
+  app.innerHTML=`<div class="player"><div class="bar"><a class="btn" href="#/games">← BACK TO GAMES</a><h2>${esc(g.title)} <span class="tag">${esc(g.category)}</span></h2>
+  <button class="btn" id="rs">↻ Restart</button><button class="btn" id="fs">⛶ Fullscreen</button></div><div id="stage"></div></div>`;
+  const load=async()=>{
+    const stage=$('#stage');stage.innerHTML='<div class="ov"><div><div class="spin"></div>Loading…</div></div>';
+    try{
+      const r=await fetch(url(g.path),{method:'HEAD'});if(!r.ok)throw 0;
+      const f=document.createElement('iframe');f.title=g.title;f.allow='fullscreen; autoplay; gamepad; clipboard-write';f.setAttribute('allowfullscreen','');
+      if(g.type==='flash'){
+        const abs=u=>new URL(url(u),location.href).href;
+        f.srcdoc=`<!DOCTYPE html><body style="margin:0;background:#000"><div id=c style="width:100vw;height:100vh"></div><script src="${abs('ruffle.js')}"><\/script><script>addEventListener('load',()=>{const p=RufflePlayer.newest().createPlayer();p.style.cssText='width:100%;height:100%';c.appendChild(p);p.load('${abs(g.path)}')})<\/script>`;
+      }else f.src=url(g.path);
+      f.onload=()=>stage.querySelector('.ov')?.remove();
+      stage.appendChild(f);setTimeout(()=>stage.querySelector('.ov')?.remove(),8000);
+    }catch{
+      stage.innerHTML=`<div class="ov"><div><h2>Unable to load this game.</h2><p style="color:var(--m)">The files may be missing or blocked.</p><a class="btn" href="#/games">Return to Games</a> <button class="btn pri" id="rt">Retry</button></div></div>`;
+      $('#rt').onclick=load;
+    }
+  };
+  load();$('#rs').onclick=load;
+  $('#fs').onclick=()=>{const s=$('#stage');document.fullscreenElement?document.exitFullscreen():s.requestFullscreen?.()};
 }
+function exitFs(){if(document.fullscreenElement)document.exitFullscreen().catch(()=>{})}
 
-function route(){
-  const [,r='',id]=location.hash.replace(/^#/,'').split('/');
-  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.r===(r||'home')));
-  if(r!=='games'&&r!=='' &&state.q&&r!=='play'){}
-  if(r==='games')library();
-  else if(r==='favorites')listView('Favorites',favList(),'No favorites yet. Tap ♡ on any game.');
-  else if(r==='recent')listView('Recently Played',recentList(),'You haven’t played anything yet.');
-  else if(r==='play')play(decodeURIComponent(id||''));
-  else home();
-  if(r!=='play')scrollTo(0,0);
-}
 app.addEventListener('click',e=>{
-  const f=e.target.closest('[data-fav]');
-  if(f){const id=f.dataset.fav;favs.has(id)?favs.delete(id):favs.add(id);store.set('favs',[...favs]);
-    const on=favs.has(id);f.classList.toggle('on',on);f.textContent=on?'♥':'♡';f.setAttribute('aria-pressed',on);return}
-  const c=e.target.closest('[data-cat]');if(c){state.cat=c.dataset.cat;library()}
+  const f=e.target.closest('[data-fav]'),c=e.target.closest('[data-cat]');
+  if(f){const id=f.dataset.fav;fav.has(id)?fav.delete(id):fav.add(id);LS.set('aa_fav',[...fav]);
+    const on=fav.has(id);f.classList.toggle('on',on);f.classList.add('pop');f.textContent=on?'♥':'♡';f.setAttribute('aria-pressed',on);
+    if(/favorites/.test(location.hash))setTimeout(route,350)}
+  if(c){st.cat=c.dataset.cat;st.shown=60;route()}
+  if(e.target.id==='more'){st.shown+=60;route()}
 });
-app.addEventListener('change',e=>{if(e.target.id==='sort'){state.sort=e.target.value;library()}});
-$('#q').addEventListener('input',e=>{state.q=e.target.value.trim();if(location.hash!=='#/games'){history.replaceState(null,'','#/games')}route();$('#q').focus()});
-addEventListener('hashchange',route);
-load().then(ok=>ok&&route());
-</script></body></html>
+app.addEventListener('change',e=>{if(e.target.id==='sort'){st.sort=e.target.value;route()}});
+init();
+</script>
+</body>
+</html>
